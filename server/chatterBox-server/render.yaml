@@ -1,0 +1,5 @@
+buildCommand: npm install
+startCommand: npm start
+environment:
+  NODE_ENV: production
+  NODE_VERSION: 18
