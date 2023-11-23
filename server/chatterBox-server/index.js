@@ -6,7 +6,7 @@ const bcrypt= require('bcrypt')
 const saltRounds = 10;
 
 const app=express();
-const port=3001;
+const port=process.env.PORT||3001;
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 const databaseName = process.env.DB_NAME;
