@@ -2,9 +2,9 @@ import userSVG from '../../assets/svg/userProfile.svg'
 import chatSVG from '../../assets/svg/chat.svg'
 import socket from '../../socket'
 
-const EachUsers = ({data,userID,setUserFriendList,userFriendList})=>{
+const EachUsers = ({URL,data,userID,setUserFriendList,userFriendList})=>{
     const addFriend = async(id,uID)=>{
-        const URL='http://localhost:3001/addFriend'
+        const path='/addFriend'
         const options={
             method:'PUT',
             headers:{
@@ -13,7 +13,7 @@ const EachUsers = ({data,userID,setUserFriendList,userFriendList})=>{
             body: JSON.stringify({newFriend:id,userID:uID})
         }
         try {
-            const response = await fetch(URL,options)
+            const response = await fetch(URL+path,options)
             const data = await response.json()
             const newData=data.userConversations.map(d=>{
                 return d.uid

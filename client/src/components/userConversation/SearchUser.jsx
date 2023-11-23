@@ -68,7 +68,7 @@ const SearchUser = ({userLoginData,setUserFriendList,userFriendList,URL})=>{
                 placeholder="Search User with there userID"   
             />
             {searchUser.map( (eachUsers,i)=>(
-                <EachUsers key={i} data={eachUsers} userFriendList={userFriendList} userID={userLoginData.userID} setUserFriendList={setUserFriendList}/>
+                <EachUsers key={i} URL={URL} data={eachUsers} userFriendList={userFriendList} userID={userLoginData.userID} setUserFriendList={setUserFriendList}/>
             ))}
         </div>
     )
