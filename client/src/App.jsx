@@ -19,7 +19,7 @@ const App = () => {
             on:''
         }
     })
-    const URL = 'http://localhost:3001'
+    const URL = 'https://chatterbox-server-0czw.onrender.com'
 
     const handelLogin = (name,id,pass,e)=>{
         var uname=''
@@ -36,7 +36,7 @@ const App = () => {
     }
 
     const loginUser = async()=>{
-        const URL='http://localhost:3001/login'
+        const path='/login'
         const options={
             method:'POST',
             headers:{
@@ -46,7 +46,7 @@ const App = () => {
         }
         try {
             console.log(JSON.stringify(userLoginData));
-            const response = await fetch(URL,options);
+            const response = await fetch(URL+path,options);
 
             const data = await response.json()
             if(data.state){

@@ -203,7 +203,7 @@ app.put('/socket/setUserIsOnline',async (req,res)=>{
 
 app.post('/setMessages',async(req,res)=>{
     const msgData=req.body
-    const limit = 5;
+    const limit = 34;
     try {
         const messagesData = await Message.findOne({room:msgData.currRoom})
         const pushMessage = await Message.findOneAndUpdate({room:msgData.currRoom},{$push:{messages:msgData.data}},{new:true})

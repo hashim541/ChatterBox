@@ -6,10 +6,11 @@ const io = require('socket.io')(3000, {
 })
 
 const onlineUsers = {}
-const URL = 'http://localhost:3001'
+const URL = 'https://chatterbox-server-0czw.onrender.com'
 
 io.on('connection', (socket) => {
     socket.on('lobby', async (data) => {
+        console.log(data);
         onlineUsers[data.socketID] = data
         const userData = { userID: data.userID, isOnline: true }
         setUserIsOnline(axios, userData)
@@ -19,7 +20,6 @@ io.on('connection', (socket) => {
         io.emit('reloadFriendList', da)
     })
     socket.on('listenMessage',data =>{
-        console.log(data);
         io.emit('reloadMessage',data)
     })
 
@@ -40,7 +40,7 @@ io.on('connection', (socket) => {
 
 const setUserIsOnline = async (axios, options) => {
     try {
-        const response = await axios.put(`${URL}/socket/setUserIsOnline`, options,{timeout:1000});
+        const response = await axios.put(`${URL}/socket/setUserIsOnline`, options,{timeout:5000});
     } catch (err) {
         console.error(err);
     }
