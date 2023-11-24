@@ -9,13 +9,19 @@ link :  https://hashim541.github.io/ChatterBox/
 technologies:
 
   frontend :
+  
     vite + react
     
   backend :
+  
     i) node
+    
    ii) express
+   
   iii) mongoose
+  
    iv) socket.io
     
   database :
+  
     mongoDB
