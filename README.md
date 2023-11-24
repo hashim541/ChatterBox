@@ -7,6 +7,7 @@ click the link down below to get started.
 link :  https://hashim541.github.io/ChatterBox/
 
 technologies:
+
   frontend :
     vite + react
     
