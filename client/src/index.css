@@ -427,7 +427,7 @@ label{
     z-index: 3;
   }
   .message-user{
-    width: calc(100% - 30px);
+    width: calc(100% - 14px);
     height: calc(100dvh - 90px);
   }
   .user-conversation{
@@ -435,10 +435,21 @@ label{
     height: calc(100dvh - 90px);
   }
   .top-0{
-    left: 15px;
+    left: 7px;
   }
 }
 @media(width<650px){
+  main{
+    padding-left: 7px;
+    padding-right: 7px;
+    width: calc(100% - 14px);
+    padding-bottom: 7px;
+  }
+  .message-user{
+    width: calc(100% - 14px);
+    height: calc(100dvh - 14px);
+    top: 7px;
+  }
   .hero-section{
     display: flex;
     flex-direction: column-reverse;
@@ -453,13 +464,24 @@ label{
     margin-bottom: 20px;
   }
 }
-@media(width < 450px){
+@media(width < 475px){
+  
+  .nav-img{
+    width: 35px;
+    height: 35px;
+  }
+  .list{
+    padding: 0;
+  }
+  #search{
+    font-size: .9rem;
+  }
   .nav-title{
     font-size: 1.5rem;
   }
   .log{
-    padding: 4px 15px;
-    font-size: 1rem;
+    padding: 6px 15px;
+    font-size: .8rem;
   }
   .pro-id,.eu-name,.id2{
     font-size: .7rem;
