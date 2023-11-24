@@ -40,7 +40,6 @@ const UserConversation = ({userLoginData,userFriendList,setUserFriendList,URL,se
             setOfflineUsers(offData)
         })
         socket.on('reloadFriendList',data=>{
-            console.log(data);
             if(data === userLoginData.userID){
                 reloadFriendList(data,URL)
             }

@@ -1,8 +1,10 @@
 import userSVG from '../../assets/svg/userProfile.svg'
 import chatSVG from '../../assets/svg/chat.svg'
 import socket from '../../socket'
+import { useEffect, useState } from 'react'
 
 const EachUsers = ({URL,data,userID,setUserFriendList,userFriendList})=>{
+    const [userIsInList,setUserIsInList]=useState(false)
     const addFriend = async(id,uID)=>{
         const path='/addFriend'
         const options={
@@ -25,6 +27,12 @@ const EachUsers = ({URL,data,userID,setUserFriendList,userFriendList})=>{
         }
 
     }
+    useEffect(()=>{
+        if(userFriendList.includes(data.userID)){
+            setUserIsInList(true)
+        }
+
+    },[])
     return(
         <div className="each-users">
             <img className={data.isOnline? "eu-img online-img":"eu-img "} src={userSVG} alt="" />
@@ -32,9 +40,12 @@ const EachUsers = ({URL,data,userID,setUserFriendList,userFriendList})=>{
                 <p className="eu-ids">{data.userID}</p>
                 <p className="eu-name">{data.userName}</p>
             </div>
-            {userFriendList.includes(data.userID)?
+            {userIsInList?
                 <button className="add">Friends</button>:
-                <button className="add" onClick={()=>addFriend(data.userID,userID)} ><img src={chatSVG} alt="" /></button>
+                <button className="add" onClick={(e)=>{
+                    setUserIsInList(true)
+                    addFriend(data.userID,userID)
+                }} ><img src={chatSVG} alt="" /></button>
             }
         </div>
     )
