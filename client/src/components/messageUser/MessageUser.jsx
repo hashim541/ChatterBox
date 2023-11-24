@@ -20,7 +20,9 @@ const MessageUser = ({URL,userLoginData,chatUser,room,setToggleMsg,toggleMsg})=>
             }
             messageRef.current.value = ''
             socket.emit('listenMessage',messageData)
+            setUserMessages((prevMsg)=>[...prevMsg,messageData.data])
             putUserMessage(messageData);
+            dummyRef.current.scrollIntoView({behavoir:"smooth"})
             messageRef.current.focus();
         }else{
             messageRef.current.focus();
@@ -37,9 +39,7 @@ const MessageUser = ({URL,userLoginData,chatUser,room,setToggleMsg,toggleMsg})=>
         }
         try {
             const response = await fetch(URL+path,options)
-            const data = await response.json()
-            setUserMessages(data);
-            dummyRef.current.scrollIntoView({behavoir:"smooth"})
+            // const data = await response.json()
         } catch (error) {
             console.log(error);
         }
