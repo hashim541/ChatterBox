@@ -426,9 +426,13 @@ label{
     transition: all 100ms linear;
     z-index: 3;
   }
-  .message-user,.user-conversation{
+  .message-user{
     width: calc(100% - 30px);
-    height: calc(100vh - 90px);
+    height: calc(100dvh - 90px);
+  }
+  .user-conversation{
+    width: calc(100% - 0px);
+    height: calc(100dvh - 90px);
   }
   .top-0{
     left: 15px;
@@ -440,7 +444,7 @@ label{
     flex-direction: column-reverse;
   }
   .hero-img{
-    margin-top: 60%;
+    margin-top: 70%;
   }
   .hero-img,.login-div{
     width: 100%;

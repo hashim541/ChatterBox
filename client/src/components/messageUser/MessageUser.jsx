@@ -19,14 +19,14 @@ const MessageUser = ({URL,userLoginData,chatUser,room,setToggleMsg,toggleMsg})=>
                 }
             }
             messageRef.current.value = ''
-            const socketData={currRoom:room,uid:chatUser.userID}
-            putUserMessage(messageData,socketData);
+            socket.emit('listenMessage',messageData)
+            putUserMessage(messageData);
             messageRef.current.focus();
         }else{
             messageRef.current.focus();
         }
     }
-    const putUserMessage = async (messageData,socketData)=>{
+    const putUserMessage = async (messageData,)=>{
         const path = '/setMessages'
         const options={
             method:'POST',
@@ -39,7 +39,6 @@ const MessageUser = ({URL,userLoginData,chatUser,room,setToggleMsg,toggleMsg})=>
             const response = await fetch(URL+path,options)
             const data = await response.json()
             setUserMessages(data);
-            socket.emit('listenMessage',socketData)
             dummyRef.current.scrollIntoView({behavoir:"smooth"})
         } catch (error) {
             console.log(error);
@@ -67,8 +66,8 @@ const MessageUser = ({URL,userLoginData,chatUser,room,setToggleMsg,toggleMsg})=>
         if(room){
             getMessages(room)
             socket.on('reloadMessage',data =>{
-                if(data.currRoom === room && data.uid === userLoginData.userID){
-                    getMessages(room)
+                if(data.currRoom === room && data.data.from === chatUser.userID){
+                    setUserMessages((prevMsg)=>[...prevMsg,data.data])
                 }
             })
         }

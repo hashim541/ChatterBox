@@ -18,9 +18,7 @@ const EachUsers = ({URL,data,userID,setUserFriendList,userFriendList})=>{
             const newData=data.userConversations.map(d=>{
                 return d.uid
             })
-            console.log(newData);
             setUserFriendList(newData)
-            console.log(data);
             socket.emit('newFriendAdded',id)
         } catch (error) {
             console.log(error);
